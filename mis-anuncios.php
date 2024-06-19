@@ -34,6 +34,12 @@ add_action('after_setup_theme', 'custom_image_sizes');
 function mis_anuncios_enqueue_scripts() {
     wp_enqueue_style( 'mi-anuncio-style', plugins_url( 'css/style.css', __FILE__ ) );
     wp_enqueue_script( 'mi-anuncio-click-counter', plugins_url( 'js/click-counter.js', __FILE__ ), array('jquery'), '', true );
+
+        // Localize script para pasar datos de AJAX
+    wp_localize_script('mi-anuncio-click-counter', 'mi_anuncio_ajax', array(
+        'url' => admin_url('admin-ajax.php'),
+        'nonce' => wp_create_nonce('mi_anuncio_nonce')
+    ));
 }
 add_action( 'wp_enqueue_scripts', 'mis_anuncios_enqueue_scripts' );
 
@@ -42,5 +48,32 @@ add_action( 'wp_enqueue_scripts', 'mis_anuncios_enqueue_scripts' );
 //     load_plugin_textdomain( 'mis-anuncios', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 // }
 // add_action( 'plugins_loaded', 'mis_anuncios_load_textdomain' );
+
+
+// Manejar la solicitud AJAX
+function mi_anuncio_increment_click_count() {
+    // Verificar nonce
+    if (!isset($_POST['nonce']) || !wp_verify_nonce($_POST['nonce'], 'mi_anuncio_nonce')) {
+        wp_send_json_error(array('error' => 'Nonce verification failed.'));
+        return;
+    }
+
+    // Obtener el ID del post
+    $post_id = intval($_POST['post_id']);
+
+    // Obtener el contador de clics actual
+    $click_count = get_post_meta($post_id, '_miAnuncio_clicks', true);
+    $click_count = $click_count ? $click_count : 0;
+
+    // Incrementar el contador de clics
+    $click_count++;
+    update_post_meta($post_id, '_miAnuncio_clicks', $click_count);
+
+    // Enviar respuesta exitosa con el nuevo contador de clics
+    wp_send_json_success(array('click_count' => $click_count));
+}
+add_action('wp_ajax_mi_anuncio_increment_click_count', 'mi_anuncio_increment_click_count');
+add_action('wp_ajax_nopriv_mi_anuncio_increment_click_count', 'mi_anuncio_increment_click_count');
+
 
 ?>
