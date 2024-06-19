@@ -1,5 +1,8 @@
 # MisAnuncios
-
+Contributors: Jose Vargas Molina - SocioVirtual.com
+Tags: anuncios, publicidad, imágenes, seguimiento, shortcode
+License: GPLv2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
 MisAnuncios es un plugin para WordPress que te permite mostrar anuncios en tu sitio web. Puedes asociar imágenes con URLs y realizar un seguimiento de los clics.
 
 ## Características
@@ -26,6 +29,16 @@ MisAnuncios es un plugin para WordPress que te permite mostrar anuncios en tu si
 1. Ve a **MisAnuncios** en el menú de administración.
 2. Sube tus imágenes y asócialas con URLs.
 3. Inserta el shortcode `[anuncio id="123"]` en tus páginas o entradas para mostrar los anuncios.
+
+## Preguntas Frecuentes 
+
+**¿Puedo usar distintos tamaños de anuncios?**
+Sí, puedes personalizar el tamaño de tus anuncios según las necesidades de tu sitio web. Aquí están algunos tamaños comunes:
+- Leaderboard: 728x90 px
+- Large rectangle: 336x280 px
+- Medium rectangle: 300x250 px
+- Mobile banner: 300x50 px
+- Wide skyscraper: 160x600 px
 
 ## Contribución
 
