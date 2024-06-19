@@ -32,5 +32,7 @@ MisAnuncios es un plugin para WordPress que te permite mostrar anuncios en tu si
 Si deseas contribuir al desarrollo de MisAnuncios, ¡estamos abiertos a colaboraciones! Si encuentras errores o tienes ideas para mejoras, no dudes en abrir un issue o enviar un pull request.
 
 ## Licencia
+Este proyecto está licenciado bajo la misma licencia que WordPress, que es la [Licencia Pública General de GNU (GPLv2 o posterior)](https://es.wordpress.org/about/license/). Esto significa que puedes usar, modificar y distribuir este software libremente bajo los términos de dicha licencia.
 
-Este proyecto está bajo la Licencia MIT, la misma licencia que utiliza WordPress. Consulta el archivo LICENSE para obtener más detalles.
+Para más detalles sobre la licencia, puedes consultar el archivo `LICENSE` incluido en el directorio raíz de WordPress o visitar el enlace proporcionado.
+
