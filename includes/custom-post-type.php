@@ -42,6 +42,9 @@ function miAnuncio_custom_post_type() {
         'menu_position'      => null,
         'supports'           => array('title', 'thumbnail',),
         'show_in_rest'       => true,
+        'show_in_graphql' => true, // Asegurarse de agregar esta línea
+        'graphql_single_name' => 'Anuncio', // Nombre singular para GraphQL
+        'graphql_plural_name' => 'Anuncios' // Nombre plural para GraphQL
     );
 
     register_post_type('miAnuncio', $args);
