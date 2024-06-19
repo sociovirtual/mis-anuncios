@@ -1,8 +1,13 @@
 # MisAnuncios
+
 Contributors: Jose Vargas Molina - SocioVirtual.com
+
 Tags: anuncios, publicidad, imágenes, seguimiento, shortcode
+
 License: GPLv2 or later
+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
 MisAnuncios es un plugin para WordPress que te permite mostrar anuncios en tu sitio web. Puedes asociar imágenes con URLs y realizar un seguimiento de los clics.
 
 ## Características
