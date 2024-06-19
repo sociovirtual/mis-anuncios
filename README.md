@@ -38,6 +38,7 @@ MisAnuncios es un plugin para WordPress que te permite mostrar anuncios en tu si
 ## Preguntas Frecuentes 
 
 **¿Puedo usar distintos tamaños de anuncios?**
+
 Sí, puedes personalizar el tamaño de tus anuncios según las necesidades de tu sitio web. Aquí están algunos tamaños comunes:
 - Leaderboard: 728x90 px
 - Large rectangle: 336x280 px
