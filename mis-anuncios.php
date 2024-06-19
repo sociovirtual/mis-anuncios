@@ -18,6 +18,7 @@ defined( 'ABSPATH' ) or die( '¡Acceso directo no permitido!' );
 require_once plugin_dir_path( __FILE__ ) . 'includes/custom-post-type.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/meta-boxes.php';
 require_once plugin_dir_path( __FILE__ ) . 'includes/shortcode.php';
+require_once plugin_dir_path( __FILE__ ) . 'includes/wpgraphql.php';
 
 // Ahora tendrás los siguientes tamaños disponibles para tus imágenes:
 function custom_image_sizes() {
@@ -74,6 +75,36 @@ function mi_anuncio_increment_click_count() {
 }
 add_action('wp_ajax_mi_anuncio_increment_click_count', 'mi_anuncio_increment_click_count');
 add_action('wp_ajax_nopriv_mi_anuncio_increment_click_count', 'mi_anuncio_increment_click_count');
+
+
+// Agregar columnas personalizadas en la lista de anuncios
+function mi_anuncio_columns($columns) {
+    $columns['mi_anuncio_url'] = __('URL', 'mis-anuncios');
+    $columns['mi_anuncio_clicks'] = __('Clicks', 'mis-anuncios');
+    $columns['mi_anuncio_size'] = __('Tamaño', 'mis-anuncios');
+    $columns['mi_anuncio_shortcode'] = __('Shortcode', 'mis-anuncios');
+    return $columns;
+}
+add_filter('manage_mianuncio_posts_columns', 'mi_anuncio_columns');
+
+// Mostrar datos en las columnas personalizadas
+function mi_anuncio_custom_column($column, $post_id) {
+    switch ($column) {
+        case 'mi_anuncio_url':
+            echo esc_url(get_post_meta($post_id, '_miAnuncio_url', true));
+            break;
+        case 'mi_anuncio_clicks':
+            echo esc_html(get_post_meta($post_id, '_miAnuncio_clicks', true));
+            break;
+        case 'mi_anuncio_size':
+            echo esc_html(get_post_meta($post_id, '_miAnuncio_size', true));
+            break;
+        case 'mi_anuncio_shortcode':
+            echo '[anuncio id="' . esc_attr($post_id) . '"]';
+            break;
+    }
+}
+add_action('manage_mianuncio_posts_custom_column', 'mi_anuncio_custom_column', 10, 2);
 
 
 ?>
